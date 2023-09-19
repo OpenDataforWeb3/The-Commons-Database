@@ -20,6 +20,6 @@ jobs:
           GIT_PAT : ${{ secrets.GIT_PAT }}
         
       
-        run: 
+        run: |
            cd github/scripts
            python rounds_logs_gtc.py

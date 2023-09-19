@@ -9,5 +9,5 @@ jobs:
   rounds_logs : 
     runs-on: windows-latest
     steps:
-      -name: first-step
-       run: echo "testing"
+      - name: first-step
+        run: echo "testing"

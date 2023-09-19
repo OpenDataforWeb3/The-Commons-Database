@@ -6,8 +6,18 @@ on:
   workflow_dispatch:
   
 jobs: 
-  rounds_logs : 
+  build : 
     runs-on: windows-latest
     steps:
-      - name: first-step
-        run: echo "testing"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: running code
+        env: 
+          SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
+          GIT_PAT : ${{ secrets.GIT_PAT }}
+        
+      
+        run: python rounds_logs_gtc.py

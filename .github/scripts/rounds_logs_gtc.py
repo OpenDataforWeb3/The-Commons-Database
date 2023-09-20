@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-url = os.environ["SUPABASE_URL"]
-key = os.environ["SUPABASE_KEY"]
+url = os.environ.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY")
 supabase = create_client(url, key)
 
 def rounds_info(chain_id, start_time, end_time):

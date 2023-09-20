@@ -28,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           cd .github/
           pip install -r requirements.txt
+      - name: Debug Secrets
+        run: |
+          echo "SUPABASE_URL: $SUPABASE_URL"
+          echo "SUPABASE_KEY: $SUPABASE_KEY"
+          echo "GIT_PAT: $GIT_PAT"    
           
       - name: run script
         run: |

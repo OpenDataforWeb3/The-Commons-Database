@@ -10,7 +10,7 @@ permissions:
 
   
 jobs:
-  test:
+  rounds_logs_gtc:
     env:
       SUPABASE_URL: ${{secrets.SUPABASE_URL}}
       SUPABASE_KEY: ${{secrets.SUPABASE_KEY}}

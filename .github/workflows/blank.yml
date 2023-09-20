@@ -21,15 +21,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - shell: bash
-        # env:
-        #   SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        #   SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
-        #   GIT_PAT : ${{ secrets.GIT_PAT }}
+        env:
+          SUPABASE_URL: ${{ env.SUPABASE_URL }}
+          SUPABASE_KEY : ${{ env.SUPABASE_KEY }}
+          GIT_PAT : ${{ env.GIT_PAT }}
         run: |
           echo "12332131"
-          export SUPABASE_URL=${{ env.SUPABASE_URL }}
-          export SUPABASE_KEY=${{ env.SUPABASE_KEY }}
-          export GIT_PAT=${{ env.GIT_PAT }}
+
 
           echo $SUPABASE_URL
           sudo apt update

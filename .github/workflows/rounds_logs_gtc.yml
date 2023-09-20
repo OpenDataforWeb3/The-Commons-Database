@@ -2,7 +2,8 @@ name: project_logs_gtc_upsert
 
 on:
   schedule:
-    - cron:  '1 * * * *'
+    - cron:  '0 */3 * * *'
+
   workflow_dispatch:
 
 permissions:

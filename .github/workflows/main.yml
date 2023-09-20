@@ -7,13 +7,15 @@ on:
 
 permissions:
   contents: read
-env:
-  SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
-  SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
-  GIT_PAT : ${{ secrets.GIT_PAT }}
+
   
 jobs:
   test:
+    env:
+      SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
+      GIT_PAT : ${{ secrets.GIT_PAT }}
+  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

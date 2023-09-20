@@ -28,9 +28,9 @@ jobs:
         run: |
           echo "12332131"
 
-          export SUPABASE_URL=env.SUPABASE_URL
-          export SUPABASE_KEY=env.SUPABASE_KEY
-          export GIT_PAT=env.GIT_PAT
+          export SUPABASE_URL="${env.SUPABASE_URL}"
+          export SUPABASE_KEY="${env.SUPABASE_KEY}"
+          export GIT_PAT="${env.GIT_PAT}"
           echo $SUPABASE_URL
           sudo apt update
           sudo apt install python3

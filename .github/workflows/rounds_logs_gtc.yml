@@ -17,14 +17,20 @@ jobs:
         run: |
           cd .github/
           pip install -r requirements.txt
-      
+
+          
       - name: running code
         env: 
           SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
           GIT_PAT : ${{ secrets.GIT_PAT }}
+
+        run: |
+          echo "SUPABASE_URL: $SUPABASE_URL"
+          echo "SUPABASE_KEY: $SUPABASE_KEY"
+          echo "GIT_PAT: $GIT_PAT"
         
       
-        run: |
-           cd .github/scripts
-           python rounds_logs_gtc.py
+        # run: |
+        #    cd .github/scripts
+        #    python rounds_logs_gtc.py

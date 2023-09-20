@@ -21,7 +21,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - shell: bash
-        env:
+      - env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
           GIT_PAT : ${{ secrets.GIT_PAT }}

@@ -5,6 +5,12 @@ on:
     - cron:  '1 * * * *'
   workflow_dispatch:
   
+env: 
+  SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
+  SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
+  GIT_PAT : ${{ secrets.GIT_PAT }}
+
+  
 jobs: 
   build : 
     runs-on: windows-latest
@@ -23,11 +29,7 @@ jobs:
 
           
       - name: running script
-        env: 
-          SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
-          GIT_PAT : ${{ secrets.GIT_PAT }}
-
+        
       
         run: |
            cd .github/scripts

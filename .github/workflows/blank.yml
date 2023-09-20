@@ -26,7 +26,7 @@ jobs:
           SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
           GIT_PAT : ${{ secrets.GIT_PAT }}
         run: |
-          echo ${SUPABASE_KEY}
+          echo ${secrets.SUPABASE_KEY}
           sudo apt update
           sudo apt install python3
           cd .github

@@ -27,6 +27,8 @@ jobs:
           GIT_PAT : ${{ env.GIT_PAT }}
         run: |
           echo "12332131"
+          echo $env
+          echo $SUPABASE_URL
 
           export SUPABASE_URL="${{env.SUPABASE_URL}}"
           export SUPABASE_KEY="${{env.SUPABASE_KEY}}"

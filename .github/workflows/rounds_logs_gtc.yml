@@ -8,28 +8,26 @@ on:
 jobs: 
   build : 
     runs-on: windows-latest
+    environment: python_supabase_db
     steps:
+    
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
+          
       - name: Install dependencies
         run: |
           cd .github/
           pip install -r requirements.txt
 
           
-      - name: running code
+      - name: running script
         env: 
           SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
           GIT_PAT : ${{ secrets.GIT_PAT }}
 
-        # run: |
-        #   echo "SUPABASE_URL: $SUPABASE_URL"
-        #   echo "SUPABASE_KEY: $SUPABASE_KEY"
-        #   echo "GIT_PAT: $GIT_PAT"
-        
       
         run: |
            cd .github/scripts

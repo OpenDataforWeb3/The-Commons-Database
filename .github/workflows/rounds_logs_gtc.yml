@@ -32,5 +32,6 @@ jobs:
         
       
         run: |
+           echo %SUPABASE_KEY%
            cd .github/scripts
            python rounds_logs_gtc.py

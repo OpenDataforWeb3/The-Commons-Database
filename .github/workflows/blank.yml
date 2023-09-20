@@ -28,9 +28,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install python3
+          cd .github
           pip install -r requirements.txt
           echo $SUPABASE_URL
-          cd .github/scripts
+          cd scripts
           python rounds_logs_gtc.py
 
       # Runs a single command using the runners shell

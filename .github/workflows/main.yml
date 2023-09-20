@@ -12,9 +12,9 @@ permissions:
 jobs:
   test:
     env:
-      SUPABASE_URL : ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY : ${{ secrets.SUPABASE_KEY }}
-      GIT_PAT : ${{ secrets.GIT_PAT }}
+      SUPABASE_URL: ${{secrets.SUPABASE_URL}}
+      SUPABASE_KEY: ${{secrets.SUPABASE_KEY}}
+      GIT_PAT: ${{secrets.GIT_PAT}}
   
     runs-on: ubuntu-latest
     steps:

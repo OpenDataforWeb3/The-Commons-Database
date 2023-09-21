@@ -27,8 +27,8 @@ def rounds_info(chain_id, start_time, end_time):
                     try:
                         round_data = {
                             'chainId' : chain_id,
-                            'roundId': round['id'],
-                            'roundName': round['metadata']['name'],
+                            'id': round['id'],
+                            'grantsProgramRoundId': round['metadata']['name'],
                             'roundStartTime': datetime.datetime.utcfromtimestamp(int(round['roundStartTime'])), # create a datetime object from the timestamp in UTC time
                             'roundEndTime': datetime.datetime.utcfromtimestamp(int(round['roundEndTime']))
                         }
@@ -43,14 +43,14 @@ def rounds_info(chain_id, start_time, end_time):
     
 #getting last update date and getting rounds that were indexed after the last update
 table_name = 'rounds_logs'
-lastUpdatedAt = supabase.table(table_name).select('updatedAt').execute()
+lastUpdatedAt = supabase.table(table_name).select('createdAt').execute()
 lastUpdatedAt = pd.DataFrame.from_dict(lastUpdatedAt.data).max()[0]
-lastUpdatedAt = datetime.datetime.strptime(lastUpdatedAt, '%Y-%m-%dT%H:%M:%S.%f%z')
+lastUpdatedAt = datetime.datetime.strptime(lastUpdatedAt, '%Y-%m-%dT%H:%M:%S.%f')
 lastUpdatedAt = datetime.datetime(lastUpdatedAt.year, lastUpdatedAt.month, lastUpdatedAt.day, 23, 59, 0)
 
 
 #getting rounds that were creted between the specified date 
-days_to_offset = 7
+days_to_offset = 4
 chainIds = ['1','10','250', '42161', '421613', '424', '5', '58008']
 start_time = lastUpdatedAt -  timedelta(days=days_to_offset)
 end_time = lastUpdatedAt
@@ -66,14 +66,11 @@ for chain_id in chainIds:
     
     
 chain_data_df.reset_index( inplace = True)
-chain_data_df['grantsProgram'] = 'gitcoin_rounds'
-chain_data_df.rename(columns= { 'index':'id', 'roundId': 'grantsProgramRoundId'}, inplace = True)
-    
+chain_data_df['grantsProgram'] = 'gitcoin_rounds'    
 chain_data_df['roundStartTime'] = chain_data_df['roundStartTime'].apply(lambda x: str(x))
 chain_data_df['roundEndTime'] = chain_data_df['roundEndTime'].apply(lambda x: str(x))
+chain_data_df['createdAt'] = str(datetime.datetime.now())
 
 table_name = 'rounds_logs'
 
 supabase.table(table_name).upsert(chain_data_df.to_dict(orient='records')).execute()
-
-
